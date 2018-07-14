@@ -1,5 +1,6 @@
 const express = require("express")
 const path = require("path")
+var bodyParser = require("body-parser");
 
 // 创建路由对象
 const accountRouter = express.Router();
@@ -11,6 +12,15 @@ accountRouter.get('/login',accountCTRL.getLoginPage)
 
 // 获取图片验证码
 accountRouter.get("/vcode",accountCTRL.getImgVcode)
+
+// 获取注册页面
+accountRouter.get("/register",accountCTRL.getRegisterPage)
+
+// 处理post请求
+accountRouter.post("/register",accountCTRL.register)
+
+//处理浏览器用户的登录请求
+accountRouter.post("/login",accountCTRL.login)
 
 //导出路由模块(路由中间件)
 module.exports = accountRouter
